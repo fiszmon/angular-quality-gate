@@ -1,10 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SightseeingPoint} from '../models/sightseeing-point';
 import {Observable} from 'rxjs';
-// import {Router} from '@angular/router';
 import {SightsService} from '../services/sights.service';
 import {MapComponent} from '../map/map.component';
 import {Location} from '../models/location';
+import {SightDetailsComponent} from '../sight/components/sight-details/sight-details.component';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-sights',
@@ -12,14 +13,14 @@ import {Location} from '../models/location';
   styleUrls: ['./sights.component.scss']
 })
 export class SightsComponent implements OnInit {
-
   @ViewChild('mapComponent', {static: false}) mapComponent: MapComponent;
   currentCity: Location;
   sights$: Observable<SightseeingPoint[]>;
+  modalRef: BsModalRef;
 
   constructor(
-    private sightsService: SightsService
-    // private router: Router
+    private sightsService: SightsService,
+    private modalService: BsModalService
   ) {
   }
 
@@ -35,6 +36,12 @@ export class SightsComponent implements OnInit {
   selectSight(sight: SightseeingPoint): void {
     this.sightsService.selectedSight = sight;
     this.centerMap(new Location(sight.longitude, sight.latitude));
-    // this.router.navigate([`/sight`]).catch(console.error);
+    this.seeDetails(sight);
+  }
+
+  seeDetails(sight: SightseeingPoint): void {
+    this.modalRef = this.modalService.show(SightDetailsComponent, {
+      initialState: {sight}
+    });
   }
 }
