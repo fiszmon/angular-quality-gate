@@ -6,7 +6,11 @@ import {SightsListComponent} from './sights-list/sights-list.component';
 const routes: Routes = [
   {path: '', redirectTo: '/sights', pathMatch: 'full'},
   {path: 'sights', component: SightsComponent},
-  {path: 'sights-list', component: SightsListComponent}
+  {path: 'sights-list', component: SightsListComponent},
+  {
+    path: 'sight',
+    loadChildren: () => import('./sight/sight-routing.module').then(m => m.SightRoutingModule),
+  }
 ];
 
 @NgModule({

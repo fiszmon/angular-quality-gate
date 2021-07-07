@@ -1,0 +1,27 @@
+<form [formGroup]="fGroup" (ngSubmit)="submit()">
+  <label>name
+    <input class="form-control" formControlName="name" required/>
+  </label>
+  <label>longitude
+    <input class="form-control" formControlName="longitude" required/>
+  </label>
+  <label >latitude
+    <input class="form-control" formControlName="latitude" required/>
+  </label>
+  <label>country
+    <input class="form-control" formControlName="country" required/>
+  </label>
+  <label>description
+    <input class="form-control" formControlName="description" required/>
+  </label>
+  <label>color
+    <input class="form-control" formControlName="color" required/>
+  </label>
+  <button
+    type="submit"
+    class="btn btn-outline-info"
+    [disabled]="fGroup.invalid"
+  >
+    Submit
+  </button>
+</form>

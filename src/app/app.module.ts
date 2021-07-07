@@ -11,6 +11,9 @@ import {SightsComponent} from './sights/sights.component';
 import {NavComponent} from './nav/nav.component';
 import {HttpClientModule} from '@angular/common/http';
 import {SightsListComponent} from './sights-list/sights-list.component';
+import {SightModule} from './sight/sight.module';
+import {ModalModule} from 'ngx-bootstrap/modal';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import {SightsListComponent} from './sights-list/sights-list.component';
       accessToken: environment.mapboxToken
     }),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SightModule,
+    BrowserAnimationsModule,
+    ModalModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
