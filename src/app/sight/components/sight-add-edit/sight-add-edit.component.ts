@@ -4,6 +4,8 @@ import {Country} from '../../../models/country';
 import {SightseeingPoint} from '../../../models/sightseeing-point';
 import {ActivatedRoute} from '@angular/router';
 import {SightsService} from '../../../services/sights.service';
+import {longitude} from '../validators/longitude';
+import {latitude} from '../validators/latitude';
 
 @Component({
   selector: 'app-sight-add-edit',
@@ -19,8 +21,8 @@ export class SightAddEditComponent implements OnInit {
   constructor(private route: ActivatedRoute, private sightsService: SightsService) {
     this.fGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      longitude: new FormControl('', [Validators.required]),
-      latitude: new FormControl('', [Validators.required]),
+      longitude: new FormControl('', [Validators.required, longitude()]),
+      latitude: new FormControl('', [Validators.required, latitude()]),
       country: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       color: new FormControl('', [Validators.required])

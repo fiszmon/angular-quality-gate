@@ -4,13 +4,15 @@
   </label>
   <small class="text-danger" *ngIf="fGroup.controls.name.touched&&fGroup.controls.name.errors?.required">Name is required</small>
   <label>longitude
-    <input class="form-control" formControlName="longitude"/>
+    <input type="number" class="form-control" formControlName="longitude"/>
   </label>
   <small class="text-danger" *ngIf="fGroup.controls.longitude.touched&&fGroup.controls.longitude.errors?.required">Longitude is required</small>
+  <small class="text-danger" *ngIf="fGroup.controls.longitude.touched&&fGroup.controls.longitude.errors?.longitude">Longitude is out of range</small>
   <label >latitude
-    <input class="form-control" formControlName="latitude"/>
+    <input type="number" class="form-control" formControlName="latitude"/>
   </label>
   <small class="text-danger" *ngIf="fGroup.controls.latitude.touched&&fGroup.controls.latitude.errors?.required">Latitude is required</small>
+  <small class="text-danger" *ngIf="fGroup.controls.latitude.touched&&fGroup.controls.latitude.errors?.latitude">Latitude is out of range</small>
   <label>
     Country
     <select class="custom-select" formControlName="country">
