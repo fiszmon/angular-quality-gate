@@ -3,6 +3,7 @@ import {SightseeingPoint} from '../models/sightseeing-point';
 import {SightsService} from '../services/sights.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {SightDetailsComponent} from '../sight/components/sight-details/sight-details.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sights-list',
@@ -13,7 +14,7 @@ export class SightsListComponent implements OnInit {
   modalRef: BsModalRef;
   sights: SightseeingPoint[] = [];
 
-  constructor(private sightsService: SightsService, private modalService: BsModalService) {
+  constructor(private sightsService: SightsService, private modalService: BsModalService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -26,5 +27,10 @@ export class SightsListComponent implements OnInit {
     this.modalRef = this.modalService.show(SightDetailsComponent, {
       initialState: {sight}
     });
+  }
+
+  edit(id: string): boolean {
+    this.router.navigate([`sight/${id}`]).catch(console.error);
+    return false;
   }
 }
