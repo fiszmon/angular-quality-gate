@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SightseeingPoint} from '../models/sightseeing-point';
 import {Observable} from 'rxjs';
-import {Router} from '@angular/router';
+// import {Router} from '@angular/router';
 import {SightsService} from '../services/sights.service';
 import {MapComponent} from '../map/map.component';
 import {Location} from '../models/location';
@@ -18,8 +18,8 @@ export class SightsComponent implements OnInit {
   sights$: Observable<SightseeingPoint[]>;
 
   constructor(
-    private sightsService: SightsService,
-    private router: Router
+    private sightsService: SightsService
+    // private router: Router
   ) {
   }
 
@@ -34,6 +34,7 @@ export class SightsComponent implements OnInit {
 
   selectSight(sight: SightseeingPoint): void {
     this.sightsService.selectedSight = sight;
-    this.router.navigate(['/sight']).then();
+    this.centerMap(new Location(sight.longitude, sight.latitude));
+    // this.router.navigate([`/sight`]).catch(console.error);
   }
 }
