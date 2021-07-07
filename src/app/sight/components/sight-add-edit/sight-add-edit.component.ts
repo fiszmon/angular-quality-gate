@@ -17,6 +17,7 @@ export class SightAddEditComponent implements OnInit {
   countries: Country[];
   colors: { id: number, value: string }[];
   sightId: string;
+  succeed = false;
 
   constructor(private route: ActivatedRoute, private sightsService: SightsService) {
     this.fGroup = new FormGroup({
@@ -87,6 +88,9 @@ export class SightAddEditComponent implements OnInit {
       sightAPI.id = this.sightId;
     }
     const request = this.sightId ? this.sightsService.update(sightAPI) : this.sightsService.addNew(sightAPI);
-    request.subscribe(() => alert('Operation successfully ended'));
+    request.subscribe(() => {
+      alert('Operation successfully ended');
+      this.succeed = true;
+    });
   }
 }
