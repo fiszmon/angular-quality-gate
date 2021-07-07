@@ -70,6 +70,19 @@ export class SightAddEditComponent implements OnInit {
   }
 
   submit(): void {
-
+    const country = this.countries.find(c => c.iata_code === this.fGroup.value.country);
+    const sightAPI = new SightseeingPoint(
+      this.fGroup.value.name,
+      this.fGroup.value.longitude,
+      this.fGroup.value.latitude,
+      new Country(country.name, country.iata_code),
+      this.fGroup.value.description,
+      this.fGroup.value.color
+    );
+    if (this.sightId) {
+      sightAPI.id = this.sightId;
+    }
+    const request = this.sightId ? this.sightsService.update(sightAPI) : this.sightsService.addNew(sightAPI);
+    request.subscribe(() => alert('Operation successfully ended'));
   }
 }

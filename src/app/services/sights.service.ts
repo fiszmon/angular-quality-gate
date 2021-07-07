@@ -17,9 +17,7 @@ export class SightsService {
   }
 
   private static createSightFromAPIData(sight: SightseeingPoint): SightseeingPoint {
-    const country = new Country();
-    country.name = sight.country.name;
-    country.iata_code = sight.country.iata_code;
+    const country = new Country(sight.country.name, sight.country.iata_code);
 
     return new SightseeingPoint(
       sight.name,
@@ -52,5 +50,13 @@ export class SightsService {
         return SightsService.createSightFromAPIData(sight);
       })
     );
+  }
+
+  addNew(sight: SightseeingPoint): Observable<void> {
+    return this.http.post<void>(`${environment.apiUrl}/sights`, sight);
+  }
+
+  update(sight: SightseeingPoint): Observable<void> {
+    return this.http.put<void>(`${environment.apiUrl}/sights/${sight.id}`, sight);
   }
 }

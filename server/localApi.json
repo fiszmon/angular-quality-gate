@@ -13,8 +13,7 @@
       "color": 1
     },
     {
-      "id": "2",
-      "name": "Dragon",
+      "name": "Dragon3",
       "longitude": 19.933606117422418,
       "latitude": 50.053059067891,
       "country": {
@@ -22,7 +21,8 @@
         "iata_code": "PL"
       },
       "description": "Dragon of Wawel Hill, is a famous dragon in Polish folklore. His lair was in a cave at the foot of Wawel Hill on the bank of the Vistula River",
-      "color": 2
+      "color": 2,
+      "id": "2"
     },
     {
       "id": "3",
@@ -35,6 +35,18 @@
       },
       "description": "This large mound of unknown origin is a popular destination for scenic views of the city.",
       "color": 1
+    },
+    {
+      "name": "Adama Mickiewicza",
+      "longitude": "19.937908385437343",
+      "latitude": "50.06150072587465",
+      "country": {
+        "name": "POLAND",
+        "iata_code": "PL"
+      },
+      "description": "Możesz sprawdzić na mapie, czy punkt zostanie poprawnie wyświetlony an rynku w Krakowie",
+      "color": "2",
+      "id": "11c"
     }
   ]
 }
