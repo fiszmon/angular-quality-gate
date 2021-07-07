@@ -24,7 +24,7 @@ export class SightAddEditComponent implements OnInit {
       longitude: new FormControl('', [Validators.required, longitude()]),
       latitude: new FormControl('', [Validators.required, latitude()]),
       country: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required, Validators.maxLength(256)]),
       color: new FormControl('', [Validators.required])
     });
 
@@ -44,6 +44,8 @@ export class SightAddEditComponent implements OnInit {
     ];
 
     this.colors = SightAddEditComponent.getColors();
+
+    this.fGroup.valueChanges.subscribe(() => console.log(this.fGroup.controls));
   }
 
   private static getColors(): { id: number, value: string }[] {

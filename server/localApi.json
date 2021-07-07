@@ -35,18 +35,6 @@
       },
       "description": "This large mound of unknown origin is a popular destination for scenic views of the city.",
       "color": 1
-    },
-    {
-      "name": "Adama Mickiewicza",
-      "longitude": "19.937908385437343",
-      "latitude": "50.06150072587465",
-      "country": {
-        "name": "POLAND",
-        "iata_code": "PL"
-      },
-      "description": "Możesz sprawdzić na mapie, czy punkt zostanie poprawnie wyświetlony an rynku w Krakowie",
-      "color": "2",
-      "id": "11c"
     }
   ]
 }
