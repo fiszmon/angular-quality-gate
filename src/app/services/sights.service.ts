@@ -16,23 +16,46 @@ export class SightsService {
   constructor(private http: HttpClient) {
   }
 
+  private createMapSights(sights: SightseeingPoint[]): SightseeingPoint[] {
+    return sights.map(sight => {
+      const country = new Country();
+      country.name = sight.country.name;
+      country.iata_code = sight.country.iata_code;
+
+      return new SightseeingPoint(
+        sight.name,
+        sight.longitude,
+        sight.latitude,
+        country,
+        sight.description,
+        sight.color
+      );
+    });
+  }
+
   getSights(): Observable<SightseeingPoint[]> {
     return this.http.get<SightseeingPoint[]>(`${environment.apiUrl}/sights`).pipe(
       map(sights => {
-        return sights.map(sight => {
-          const country = new Country();
-          country.name = sight.country.name;
-          country.iata_code = sight.country.iata_code;
+        return this.createMapSights(sights);
+      })
+    );
+  }
 
-          return new SightseeingPoint(
-            sight.name,
-            sight.longitude,
-            sight.latitude,
-            country,
-            sight.description,
-            sight.color
-          );
-        });
+  getSight(id: string): Observable<SightseeingPoint> {
+    return this.http.get<SightseeingPoint>(`${environment.apiUrl}/sights/${id}`).pipe(
+      map(sight => {
+        const country = new Country();
+        country.name = sight.country.name;
+        country.iata_code = sight.country.iata_code;
+
+        return new SightseeingPoint(
+          sight.name,
+          sight.longitude,
+          sight.latitude,
+          country,
+          sight.description,
+          sight.color
+        );
       })
     );
   }

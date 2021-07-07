@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Country} from '../../../models/country';
 import {SightseeingPoint} from '../../../models/sightseeing-point';
+import {ActivatedRoute} from '@angular/router';
+import {SightsService} from '../../../services/sights.service';
 
 @Component({
   selector: 'app-sight-add-edit',
@@ -12,8 +14,9 @@ export class SightAddEditComponent implements OnInit {
   fGroup: FormGroup;
   countries: Country[];
   colors: { id: number, value: string }[];
+  sightId: string;
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private sightsService: SightsService) {
     this.fGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
       longitude: new FormControl('', [Validators.required]),
@@ -38,23 +41,35 @@ export class SightAddEditComponent implements OnInit {
       }
     ];
 
-    this.colors = this.getColors();
+    this.colors = SightAddEditComponent.getColors();
   }
 
-  ngOnInit(): void {
-  }
-
-  submit(): void {
-
-  }
-
-  getColors(): { id: number, value: string }[] {
+  private static getColors(): { id: number, value: string }[] {
     const values: { id: number, value: string }[] = [];
 
     for (const pair of SightseeingPoint.colors()) {
       values.push({id: pair[0], value: pair[1]});
     }
-    console.log(values);
     return values;
+  }
+
+  ngOnInit(): void {
+    this.sightId = this.route.snapshot.params.id;
+    if (this.sightId) {
+      this.getAndPatchValue();
+    }
+  }
+
+  private getAndPatchValue(): void {
+    this.sightsService.getSight(this.sightId).subscribe(sight => {
+      this.fGroup.patchValue({
+        ...sight,
+        country: sight.country.iata_code
+      });
+    });
+  }
+
+  submit(): void {
+
   }
 }

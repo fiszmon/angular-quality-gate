@@ -17,7 +17,7 @@ export class NavComponent {
     },
     {
       title: 'ADD NEW',
-      path: 'sight/add'
+      path: 'sight'
     }
   ];
 }

@@ -1,6 +1,7 @@
 {
   "sights": [
     {
+      "id": "1",
       "name": "Wawel",
       "longitude": 19.9353576,
       "latitude": 50.0541492,
@@ -12,6 +13,7 @@
       "color": 1
     },
     {
+      "id": "2",
       "name": "Dragon",
       "longitude": 19.933606117422418,
       "latitude": 50.053059067891,
@@ -23,6 +25,7 @@
       "color": 2
     },
     {
+      "id": "3",
       "name": "Krakus Mound",
       "longitude": 19.957947163916888,
       "latitude": 50.038264921962835,

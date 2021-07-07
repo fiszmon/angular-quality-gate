@@ -1,14 +1,14 @@
 <form [formGroup]="fGroup" (ngSubmit)="submit()">
   <label>name
-    <input class="form-control" formControlName="name" required/>
+    <input class="form-control" formControlName="name"/>
   </label>
   <small class="text-danger" *ngIf="fGroup.controls.name.touched&&fGroup.controls.name.errors?.required">Name is required</small>
   <label>longitude
-    <input class="form-control" formControlName="longitude" required/>
+    <input class="form-control" formControlName="longitude"/>
   </label>
   <small class="text-danger" *ngIf="fGroup.controls.longitude.touched&&fGroup.controls.longitude.errors?.required">Longitude is required</small>
   <label >latitude
-    <input class="form-control" formControlName="latitude" required/>
+    <input class="form-control" formControlName="latitude"/>
   </label>
   <small class="text-danger" *ngIf="fGroup.controls.latitude.touched&&fGroup.controls.latitude.errors?.required">Latitude is required</small>
   <label>
@@ -19,9 +19,9 @@
   </label>
   <small class="text-danger" *ngIf="fGroup.controls.country.touched&&fGroup.controls.country.errors?.required">Country name is required</small>
   <label>description
-    <input class="form-control" formControlName="description" required/>
+    <textarea class="form-control" formControlName="description" maxlength="256"></textarea>
   </label>
-  <small class="text-danger" *ngIf="fGroup.controls.description.touched&&fGroup.controls.description.errors?.required">Description name is required</small>
+  <small class="text-danger" *ngIf="fGroup.controls.description.touched&&fGroup.controls.description.errors?.required">Description is required</small>
   <label>
     Color
     <select class="custom-select" formControlName="color">

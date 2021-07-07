@@ -3,8 +3,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {SightAddEditComponent} from './components/sight-add-edit/sight-add-edit.component';
 
 const routes: Routes = [
-  {path: 'add', component: SightAddEditComponent},
-  {path: 'edit', component: SightAddEditComponent},
+  {path: '', component: SightAddEditComponent},
+  {path: ':id', component: SightAddEditComponent}
 ];
 
 @NgModule({
