@@ -10,13 +10,14 @@ import {environment} from '../environments/environment';
 import {SightsComponent} from './sights/sights.component';
 import {NavComponent} from './nav/nav.component';
 import {HttpClientModule} from '@angular/common/http';
-// import {MatTabsModule} from '@angular/material/tabs';
+import {SightsListComponent} from './sights-list/sights-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
     SightsComponent,
+    SightsListComponent,
     NavComponent,
   ],
   imports: [
@@ -27,7 +28,6 @@ import {HttpClientModule} from '@angular/common/http';
     }),
     ReactiveFormsModule,
     HttpClientModule
-    // MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@ import {SightsService} from '../services/sights.service';
 })
 export class SightsListComponent implements OnInit {
 
-  sights: any[];
+  sights: any[] = [];
 
   constructor(private sightsService: SightsService) {
   }
@@ -18,5 +18,9 @@ export class SightsListComponent implements OnInit {
     this.sightsService.getSights().subscribe(sights => {
       this.sights = sights;
     });
+  }
+
+  getColor(color: number): string {
+    return SightseeingPoint.colors().get(color);
   }
 }

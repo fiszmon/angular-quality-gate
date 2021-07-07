@@ -5,6 +5,6 @@ export class Location {
   ) {}
 
   toString(): string {
-    return `${this.longitude}; ${this.latitude}`;
+    return `${this.longitude}, ${this.latitude}`;
   }
 }

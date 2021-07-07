@@ -1,4 +1,4 @@
 export class Country {
   name: string;
-  iataCode: string;
+  iata_code: string;
 }

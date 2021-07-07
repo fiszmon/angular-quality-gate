@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {Country} from '../models/country';
-import {map, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +17,12 @@ export class SightsService {
   }
 
   getSights(): Observable<SightseeingPoint[]> {
-     return this.http.get<SightseeingPoint[]>(`${environment.apiUrl}/sights`).pipe(
-      tap(console.log),
-      map(result => result),
+    return this.http.get<SightseeingPoint[]>(`${environment.apiUrl}/sights`).pipe(
       map(sights => {
         return sights.map(sight => {
           const country = new Country();
           country.name = sight.country.name;
-          country.iataCode = sight.country.iata_code;
+          country.iata_code = sight.country.iata_code;
 
           return new SightseeingPoint(
             sight.name,
