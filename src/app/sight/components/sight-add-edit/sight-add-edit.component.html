@@ -11,8 +11,11 @@
   <label >latitude
     <input type="number" class="form-control" formControlName="latitude"/>
   </label>
-  <small class="text-danger" *ngIf="fGroup.controls.latitude.touched&&fGroup.controls.latitude.errors?.required">Latitude is required</small>
-  <small class="text-danger" *ngIf="fGroup.controls.latitude.touched&&fGroup.controls.latitude.errors?.latitude">Latitude is out of range</small>
+
+  <ng-container *ngFor="let error of ['required', 'latitude']">
+    <small class="text-danger" *ngIf="showError('latitude', error)">Latitude is {{error}}</small>
+  </ng-container>
+
   <label>
     Country
     <select class="custom-select" formControlName="country">
@@ -28,7 +31,7 @@
   <label>
     Color
     <select class="custom-select" formControlName="color">
-      <option *ngFor="let color of colors" [value]="color.id">{{color.value}}</option>
+      <option *ngFor="let color of colors" [value]="color[0]">{{color[1]}}</option>
     </select>
   </label>
   <small class="text-danger" *ngIf="fGroup.controls.color.touched&&fGroup.controls.color.errors?.required">Color name is required</small>

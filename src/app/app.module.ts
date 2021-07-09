@@ -4,7 +4,6 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MapComponent} from './map/map.component';
-import {ReactiveFormsModule} from '@angular/forms';
 import {NgxMapboxGLModule} from 'ngx-mapbox-gl';
 import {environment} from '../environments/environment';
 import {SightsComponent} from './sights/sights.component';
@@ -29,7 +28,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     NgxMapboxGLModule.withConfig({
       accessToken: environment.mapboxToken
     }),
-    ReactiveFormsModule,
     HttpClientModule,
     SightModule,
     BrowserAnimationsModule,

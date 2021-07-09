@@ -30,6 +30,7 @@ export class SightsListComponent implements OnInit {
   }
 
   edit(id: string): boolean {
+    // TODO consider rewrite it with usage of stopPropagation
     this.router.navigate([`sight/${id}`]).catch(console.error);
     return false;
   }

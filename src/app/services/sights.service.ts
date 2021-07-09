@@ -17,13 +17,11 @@ export class SightsService {
   }
 
   private static createSightFromAPIData(sight: SightseeingPoint): SightseeingPoint {
-    const country = new Country(sight.country.name, sight.country.iata_code);
-
     return new SightseeingPoint(
       sight.name,
       sight.longitude,
       sight.latitude,
-      country,
+      new Country(sight.country.name, sight.country.iata_code),
       sight.description,
       sight.color,
       sight.id

@@ -15,9 +15,9 @@ import {latitude} from '../validators/latitude';
 export class SightAddEditComponent implements OnInit {
   fGroup: FormGroup;
   countries: Country[];
-  colors: { id: number, value: string }[];
   sightId: string;
   succeed = false;
+  colors: [number, string][] = [...SightseeingPoint.colors()];
 
   constructor(private route: ActivatedRoute, private sightsService: SightsService) {
     this.fGroup = new FormGroup({
@@ -44,18 +44,7 @@ export class SightAddEditComponent implements OnInit {
       }
     ];
 
-    this.colors = SightAddEditComponent.getColors();
-
     this.fGroup.valueChanges.subscribe(() => console.log(this.fGroup.controls));
-  }
-
-  private static getColors(): { id: number, value: string }[] {
-    const values: { id: number, value: string }[] = [];
-
-    for (const pair of SightseeingPoint.colors()) {
-      values.push({id: pair[0], value: pair[1]});
-    }
-    return values;
   }
 
   ngOnInit(): void {
@@ -92,5 +81,10 @@ export class SightAddEditComponent implements OnInit {
       alert('Operation successfully ended');
       this.succeed = true;
     });
+  }
+
+  showError(controlName: string, errorName: string): boolean {
+    const control = this.fGroup.get(controlName);
+    return (control.touched && control?.errors?.[errorName]);
   }
 }
